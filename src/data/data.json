@@ -1,0 +1,32 @@
+[
+    {
+        "id": 3,
+        "name": "New card",
+        "description": "Wow this one is saved to json! And its pink!",
+        "status": "completed",
+        "color": "pink",
+        "dueTo": "2019-01-31",
+        "files": "https://ucarecdn.com/5c3c566b-caa3-439b-8c55-2b03a4bfcc5c~1/",
+        "createdAt": "2019-01-31"
+    },
+    {
+        "id": 2,
+        "name": "Learn node.js",
+        "description": "How to make lab 1",
+        "color": "blue",
+        "status": "progress",
+        "files": "",
+        "createdAt": "2019-01-30",
+        "dueTo": "2019-01-30"
+    },
+    {
+        "id": 1,
+        "name": "Learn something else",
+        "description": "Like React, I heard its awesome. Same goes to GraphQL but I kinda know that one already, used it in AniList API queries.",
+        "color": "grey",
+        "status": "planning",
+        "files": "",
+        "createdAt": "2019-01-30",
+        "dueTo": "2019-02-15"
+    }
+]

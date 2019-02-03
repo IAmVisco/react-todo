@@ -1,3 +1,94 @@
 body {
     margin: 0;
 }
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 4px 9px rgba(0,0,0,0.15) !important;
+}
+.row {
+    margin: 0;
+}
+
+i.fas {
+    margin-right: 5px;
+}
+
+.paper-card {
+    background: #ececec;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 200px;
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.paper-card-footer {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+}
+
+.paper-card:hover {
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.30), 0 1px 3px 1px rgba(60,64,67,0.15)
+}
+
+.btn-block {
+    width: 100%;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    margin: 5px 0;
+}
+
+.btn-block:focus {
+    outline: 0;
+}
+
+.btn-block .fas {
+    float: right;
+    transition: .4s ease-out;
+}
+
+.btn-block.collapsed .fas {
+    padding-top: 5px;
+}
+
+.btn-block:not(.collapsed) .fas {
+    padding-bottom: 5px;
+    transform: rotate(-180deg);
+}
+
+.btn-wide {
+    width: 100%;
+}
+
+.btn-half {
+    width: 49%;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.uploader-yellow-button .uploadcare--widget__button_type_open {
+    background-color: #fbc701;
+    cursor: pointer;
+}
+
+.uploader-yellow-button .uploadcare--widget__button_type_open:hover {
+    background-color: #edc218;
+}
