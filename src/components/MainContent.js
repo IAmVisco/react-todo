@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 class MainContent extends Component {
   render() {
@@ -6,8 +6,8 @@ class MainContent extends Component {
       <div>
         <p>Main content goes here!</p>
       </div>
-    );
+    )
   }
 }
 
-export default MainContent;
+export default MainContent

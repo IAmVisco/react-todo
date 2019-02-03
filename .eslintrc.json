@@ -3,6 +3,6 @@
   "rules": {
     "quotes": ["warn", "single"],
     "indent": ["warn", 2],
-    "semi": ["warn", "always"]
+    "semi": ["warn", "never"]
   }
 }
