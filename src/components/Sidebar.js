@@ -23,14 +23,6 @@ class Sidebar extends Component {
 
     this.onChange = this.onChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
-  }
-
-  componentDidMount() {
-    TinyDatePicker(document.getElementById('dueTo'), {
-      mode: 'dp-below',
-      format: date => moment(date).format('YYYY-MM-DD')
-    }).on('select', (_, dp) => this.setState({dueTo:  moment(dp.state.selectedDate).format('YYYY-MM-DD')}))
   }
 
   onChange(e) {
@@ -43,6 +35,11 @@ class Sidebar extends Component {
   }
 
   render() {
+    TinyDatePicker(document.getElementById('dueTo'), {
+      mode: 'dp-below',
+      format: date => moment(date).format('YYYY-MM-DD')
+    }).on('select', (_, dp) => this.setState({dueTo: moment(dp.state.selectedDate).format('YYYY-MM-DD')}))
+    
     return (
       <Container className="mt-22">
         <Collapsible
