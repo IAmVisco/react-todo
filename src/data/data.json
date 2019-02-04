@@ -11,8 +11,8 @@
     },
     {
         "id": 2,
-        "name": "Learn node.js",
-        "description": "How to make lab 1",
+        "name": "How to make lab 1",
+        "description": "Learn node.js",
         "color": "blue",
         "status": "progress",
         "files": "",

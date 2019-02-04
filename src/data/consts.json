@@ -1,0 +1,12 @@
+{
+    "status": {
+        "completed": "Completed",
+        "progress": "In progress",
+        "planning": "Planning"
+    },
+    "icon": {
+        "completed": "check",
+        "progress": "clock",
+        "planning": "edit"
+    }
+}

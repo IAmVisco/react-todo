@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-i.fas {
+span.fa {
     margin-right: 5px;
 }
 
@@ -54,8 +54,9 @@ i.fas {
 }
 
 .Collapsible__trigger:after {
-    font-family: 'FontAwesome';
+    font-family: 'Font Awesome\ 5 Free';
 	content: '\f107';
+    font-weight: 900;
 	position: absolute;
 	right: 10px;
 	top: 14px;
