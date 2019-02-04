@@ -51,6 +51,7 @@ span.fa {
     height: 50px;
     margin: 5px 0;
     position: relative;
+    outline: 0 !important;
 }
 
 .Collapsible__trigger:after {
@@ -61,7 +62,6 @@ span.fa {
 	right: 10px;
 	top: 14px;
 	display: block;
-    outline: 0;
 	transition: transform .4s ease-out;
 }
 .Collapsible__trigger.is-open:after {
@@ -76,12 +76,8 @@ span.fa {
     width: 49%;
 }
 
-.mb-0 {
-    margin-bottom: 0;
-}
-
-.mt-25 {
-    margin-top: 25px;
+.mt-22 {
+    margin-top: 22px;
 }
 
 .mt-15 {
