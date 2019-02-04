@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <Navbar bg="light" expand="sm" className="shadow">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">React ToDo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse id="navbar-collapse">
             <Nav className="mr-auto">
