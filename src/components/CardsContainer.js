@@ -7,14 +7,7 @@ class CardsContainer extends Component {
   render() {
     const cards = data.map(card => <PaperCard
       key={card.id}
-      name={card.name}
-      color={card.color}
-      description={card.description}
-      status = {card.status}
-      color = {card.color}
-      dueTo = {card.dueTo}
-      files = {card.files}
-      createdAt = {card.createdAt}
+      card={card}
     />)
     return (
       <Container className="mt-15">

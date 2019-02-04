@@ -5,15 +5,19 @@ import '../styles/colors.css'
 class PaperCard extends React.Component {
   render() {
     return (
-      <div className={`paper-card ${this.props.color}`}>
-        <h3>{this.props.name}</h3>
-        <p>{this.props.description}</p>
-        {this.props.files && <a href={this.props.files} target="_blank">Attachements</a>}
-        {this.props.dueTo && <p>Due to {this.props.dueTo}</p>}
+      <div className={`paper-card ${this.props.card.color}`}>
+        <h3>{this.props.card.name}</h3>
+        <p>{this.props.card.description}</p>
+        {this.props.card.files && <a
+          href={this.props.card.files}
+          target="_blank"
+          rel="noopener noreferrer"
+        >Attachements</a>}
+        {this.props.card.dueTo && <p>Due to {this.props.card.dueTo}</p>}
 
         <PaperCardFooter
-          status={this.props.status}
-          createdAt={this.props.createdAt}
+          status={this.props.card.status}
+          createdAt={this.props.card.createdAt}
         />
       </div>
     )
