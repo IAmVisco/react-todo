@@ -43,31 +43,28 @@ i.fas {
     bottom: 2px;
 }
 
-.btn-block {
+.Collapsible__trigger {
     width: 100%;
     background-color: #f2f2f2;
     border: none;
     cursor: pointer;
     height: 50px;
     margin: 5px 0;
+    position: relative;
 }
 
-.btn-block:focus {
+.Collapsible__trigger:after {
+    font-family: 'FontAwesome';
+	content: '\f107';
+	position: absolute;
+	right: 10px;
+	top: 14px;
+	display: block;
     outline: 0;
+	transition: transform .4s ease-out;
 }
-
-.btn-block .fas {
-    float: right;
-    transition: .4s ease-out;
-}
-
-.btn-block.collapsed .fas {
-    padding-top: 5px;
-}
-
-.btn-block:not(.collapsed) .fas {
-    padding-bottom: 5px;
-    transform: rotate(-180deg);
+.Collapsible__trigger.is-open:after {
+	transform: rotateZ(-180deg);
 }
 
 .btn-wide {
