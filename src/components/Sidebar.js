@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Collapsible from 'react-collapsible'
+import ColorPicker from './ColorPicker'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import {Button} from 'react-bootstrap'
@@ -15,7 +16,7 @@ class Sidebar extends Component {
       name: '',
       description: '',
       status: 'planning',
-      color: '',
+      color: 'grey',
       dueTo: '',
       files: '',
       createdAt: ''
@@ -103,7 +104,7 @@ class Sidebar extends Component {
 
               />
             </Form.Group>
-            {/*<ColorPicker />*/}
+            <ColorPicker onChange={this.onChange} value={this.props.color} />
 
             <Form.Group controlId="dueTo">
               <Form.Label>Due to</Form.Label>
