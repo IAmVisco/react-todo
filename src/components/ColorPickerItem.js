@@ -11,7 +11,7 @@ class ColorPickerItem extends Component {
           id={this.props.color}
           value={this.props.color}
           onChange={this.props.onChange}
-          // checked={this.props.picked === this.props.color}
+          defaultChecked={this.props.color === 'grey'}
         />
         <label
           className="material-label"
