@@ -29,7 +29,7 @@ class ColorPicker extends React.Component {
     return (
       <Form.Group>
         <Form.Label className="d-block">Color</Form.Label>
-          {colorCircles}
+        {colorCircles}
       </Form.Group>
     )
   }
