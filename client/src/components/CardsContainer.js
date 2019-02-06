@@ -1,11 +1,21 @@
 import React, {Component} from 'react'
 import {Container} from 'react-bootstrap'
+import axios from 'axios'
 import PaperCard from './PaperCard'
-import data from '../data/data'
 
 class CardsContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {data : []}
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3001/getAllCards')
+      .then(res => this.setState({data: res.data}))
+  }
+
   render() {
-    const cards = data.map(card => <PaperCard
+    const cards = this.state.data.map(card => <PaperCard
       key={card.id}
       card={card}
     />)
