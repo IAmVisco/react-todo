@@ -15,6 +15,7 @@ class Sidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: '',
       name: '',
       description: '',
       status: 'planning',
@@ -52,6 +53,7 @@ class Sidebar extends Component {
     e.preventDefault()
     axios
       .post('http://localhost:3001/api/card', this.state)
+      .then(res => this.props.updateData(res.data))
       .catch(this.notify)
   }
 

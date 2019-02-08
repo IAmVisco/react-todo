@@ -1,5 +1,8 @@
 const express = require('express')
 const cors = require('cors')
+const moment = require('moment')
+const fs = require('fs')
+const nanoid = require('nanoid')
 
 const PORT = process.env.PORT || 3001
 let data = require('./data.json')
@@ -15,9 +18,17 @@ router.get('/cards', (req, res) => {
 })
 
 router.post('/card', (req, res) => {
-  console.log(req.body)
-  if (req.body && req.body.name && req.body.description) {
-    res.status(200).send({success: true, method: 'post'})
+  let card = req.body
+  if (card && card.name && card.description) {
+    card.createdAt = moment().format('YYYY-MM-DD')
+    card.id = nanoid(8)
+    data.unshift(card)
+    fs.writeFile('./data.json', JSON.stringify(data), 'utf8', (err) => {
+        if (err) {
+            throw err
+        }
+    })
+    res.status(200).send(data)
   }
   else {
     res.status(400).send({})
