@@ -5,10 +5,6 @@ import Sidebar from './components/Sidebar'
 import CardsContainer from './components/CardsContainer'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <>

@@ -6,11 +6,11 @@ import PaperCard from './PaperCard'
 class CardsContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = {data : []}
+    this.state = {data: []}
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/getAllCards')
+    axios.get('http://localhost:3001/api/cards')
       .then(res => this.setState({data: res.data}))
   }
 
