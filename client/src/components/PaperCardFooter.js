@@ -1,30 +1,55 @@
 import React from 'react'
 import Moment from 'react-moment'
 import FontAwesome from 'react-fontawesome'
-import {icon, status} from '../data/consts'
-import {Dropdown} from "react-bootstrap"
+import {Dropdown} from 'react-bootstrap'
+
+const status = {
+  'completed': 'Completed',
+  'progress': 'In progress',
+  'planning': 'Planning'
+}
+const icon = {
+  'completed': 'check',
+  'progress': 'clock',
+  'planning': 'pencil-ruler'
+}
+
+class StatusDropdownToggle extends React.Component {
+  handleClick = (e) => {
+    e.preventDefault()
+    this.props.onClick(e)
+  }
+
+  render() {
+    return (
+      <small className="c-pointer" onClick={this.handleClick}>
+        <FontAwesome name={icon[this.props.status]} />
+        {status[this.props.status]}
+      </small>
+    )
+  }
+}
 
 class PaperCardFooter extends React.Component {
+  getDropdownItems = () => {
+    let items = []
+    for (let prop in icon) {
+      items.push(<Dropdown.Item key={prop}><FontAwesome name={icon[prop]} />{status[prop]}</Dropdown.Item>)
+    }
+    return items
+  }
+
   render() {
     return (
       <div className="paper-card-footer">
-        <span className="small" style={{'cursor': 'pointer'}}>
-          <FontAwesome name={icon[this.props.status]}/>
-          {status[this.props.status]}
-        </span>
         <Dropdown>
-          <Dropdown.Toggle id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
+          <Dropdown.Toggle as={StatusDropdownToggle} status={this.props.status} />
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            {this.getDropdownItems()}
           </Dropdown.Menu>
         </Dropdown>
-        <span className="text-muted small pull-right">Created at <Moment
-          format="MMM Do YYYY">{this.props.createdAt}</Moment></span>
+        <small className="text-muted pull-right">Created at <Moment
+          format="MMM Do YYYY">{this.props.createdAt}</Moment></small>
       </div>
     )
   }

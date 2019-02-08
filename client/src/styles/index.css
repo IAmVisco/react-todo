@@ -102,6 +102,10 @@ span.fa {
     margin-top: 15px;
 }
 
+.c-pointer {
+    cursor: pointer;
+}
+
 .uploader-yellow-button .uploadcare--widget__button_type_open {
     background-color: #fbc701;
     cursor: pointer;

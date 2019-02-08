@@ -33,6 +33,7 @@ class PaperCard extends React.Component {
         <PaperCardFooter
           status={this.props.card.status}
           createdAt={this.props.card.createdAt}
+          cardId={this.props.card.id}
         />
       </div>
     )
