@@ -3,17 +3,11 @@ import moment from 'moment'
 import Moment from 'react-moment'
 import PaperCardFooter from './PaperCardFooter'
 import FontAwesome from 'react-fontawesome'
-import axios from 'axios'
 import '../styles/colors.css'
 
 class PaperCard extends React.Component {
-  removeCard(id) {
-    console.log(id)
-    axios.delete('http://localhost:3001/api/card', {id: id})
-  }
-
   render() {
-    let dueToFmt = ""
+    let dueToFmt = ''
     const dueTo = this.props.card.dueTo
     if (dueTo) {
       if (moment().isBefore(dueTo) || this.props.card.status === 'completed') {
@@ -25,7 +19,7 @@ class PaperCard extends React.Component {
     }
     return (
       <div className={`paper-card ${this.props.card.color}`}>
-        <span className="card-remove" onClick={() => this.removeCard(this.props.card.id)}>
+        <span className="card-remove" onClick={() => this.props.handleRemove(this.props.card.id)}>
           <FontAwesome name="times" />
         </span>
         <h3>{this.props.card.name}</h3>

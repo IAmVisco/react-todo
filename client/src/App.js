@@ -24,7 +24,7 @@ class App extends React.Component {
             <Sidebar data={this.state.data} updateData={data => this.setState({data})} />
           </Col>
           <Col lg={9}>
-            <CardsContainer data={this.state.data} updateData={data => this.setState({data})} />
+            <CardsContainer data={this.state.data} updateData={data => this.setState({data: data.data})} />
           </Col>
         </Row>
       </React.Fragment>
