@@ -41,11 +41,11 @@ class Sidebar extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  notify(err) {
+  showErrorToast(err) {
     const res = err.response
     toast.error(`Error ${res.status} has occured! ${res.statusText}`, {
       position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 3000
+      autoClose: 5000
     })
   }
 
@@ -54,7 +54,7 @@ class Sidebar extends Component {
     axios
       .post('http://localhost:3001/api/card', this.state)
       .then(res => this.props.updateData(res.data))
-      .catch(this.notify)
+      .catch(this.showErrorToast)
   }
 
   render() {
@@ -66,7 +66,7 @@ class Sidebar extends Component {
           easing="cubic-bezier(.25,.8,.25,1)"
           open
         >
-          <Form style={{'padding': 3}} onSubmit={this.handleSubmit}>
+          <Form className="p-1" onSubmit={this.handleSubmit}>
             <Form.Group controlId="card-name">
               <Form.Label>Name</Form.Label>
               <Form.Control

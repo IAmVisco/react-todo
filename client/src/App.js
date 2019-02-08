@@ -6,37 +6,28 @@ import CardsContainer from './components/CardsContainer'
 import axios from 'axios'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: []
-    }
-
-    this.updateData = this.updateData.bind(this)
-  }
-
-  updateData(data) {
-    this.setState({data})
+  state = {
+    data: []
   }
 
   componentDidMount() {
     axios.get('http://localhost:3001/api/cards')
-      .then(res => this.updateData(res.data))
+      .then(res => this.setState({data: res.data}))
   }
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <Header />
         <Row>
           <Col lg={3}>
-            <Sidebar data={this.state.data} updateData={this.updateData} />
+            <Sidebar data={this.state.data} updateData={data => this.setState({data})} />
           </Col>
           <Col lg={9}>
-            <CardsContainer data={this.state.data} />
+            <CardsContainer data={this.state.data} updateData={data => this.setState({data})} />
           </Col>
         </Row>
-      </>
+      </React.Fragment>
     )
   }
 }

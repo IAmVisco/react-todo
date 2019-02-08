@@ -7,6 +7,7 @@ class CardsContainer extends Component {
     const cards = this.props.data.map(card => <PaperCard
       key={card.id}
       card={card}
+      updateData={this.props.updateData}
     />)
     return (
       <Container className="mt-15">

@@ -35,6 +35,11 @@ router.post('/card', (req, res) => {
   }
 })
 
+router.delete('/card', (req, res) => {
+  console.log(req.body)
+  res.status(200).send('Ok')
+})
+
 app.use("/api", router)
 
 app.listen(PORT, () => console.log(`Express server is running on http://localhost:${PORT} in ${app.get('env')} mode.`))
