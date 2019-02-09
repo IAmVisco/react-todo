@@ -112,6 +112,16 @@ span.fa {
 
 .dropdown-menu {
     padding: 0;
+    height: 0;
+    border: none;
+    display: block;
+    overflow: hidden;
+    transition: all .5s cubic-bezier(0, 1, 0.5, 1);
+}
+
+.dropdown-menu.show {
+    height: calc(32px*3 + 2px); /*32px is one item + 2px margin*/
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.30), 0 1px 3px 1px rgba(60,64,67,0.15);
 }
 
 .dropdown-item:focus,
