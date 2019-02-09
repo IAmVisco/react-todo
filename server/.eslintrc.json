@@ -1,7 +1,21 @@
 {
-  "rules": {
-    "quotes": ["warn", "single"],
-    "indent": ["warn", 2],
-    "semi": ["warn", "never"]
-  }
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "rules": {
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "indent": [
+            "warn",
+            2
+        ],
+        "semi": [
+            "warn",
+            "never"
+        ]
+    }
 }

@@ -122,9 +122,15 @@ span.fa {
 .card-fade-out {
     z-index: -1;
     will-change: transform;
-    transform: translate(0, -500px);
+    transform: translate(0, -120vh);
     width: 0;
-    transition: transform 0.3s ease-in, width 0.2s ease-in-out 0.3s;
+    margin: 0;
+    padding: 0;
+    transition:
+        transform 0.3s ease-in,
+        width 0.2s ease-in-out 0.3s,
+        margin 0.2s ease-in-out 0.3s,
+        padding 0.2s ease-in-out 0.3s;
 }
 
 .uploader-yellow-button .uploadcare--widget__button_type_open {

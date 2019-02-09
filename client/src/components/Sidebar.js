@@ -4,9 +4,10 @@ import ColorPicker from './ColorPicker'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import {Button} from 'react-bootstrap'
-import {ToastContainer, toast} from 'react-toastify'
+import {ToastContainer} from 'react-toastify'
 import axios from 'axios'
 import TinyDatePicker from 'tiny-date-picker'
+import {showErrorToast} from '../utils/utils'
 import moment from 'moment'
 import 'tiny-date-picker/tiny-date-picker.min.css'
 import 'react-toastify/dist/ReactToastify.min.css'
@@ -41,20 +42,12 @@ class Sidebar extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  showErrorToast(err) {
-    const res = err.response
-    toast.error(`Error ${res.status} has occured! ${res.statusText}`, {
-      position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 5000
-    })
-  }
-
   handleSubmit(e) {
     e.preventDefault()
     axios
       .post('http://localhost:3001/api/card', this.state)
       .then(res => this.props.updateData(res.data))
-      .catch(this.showErrorToast)
+      .catch(showErrorToast)
   }
 
   render() {

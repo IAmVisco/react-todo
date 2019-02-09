@@ -34,7 +34,10 @@ class PaperCardFooter extends React.Component {
   getDropdownItems = () => {
     let items = []
     for (let prop in icon) {
-      items.push(<Dropdown.Item key={prop}><FontAwesome name={icon[prop]} />{status[prop]}</Dropdown.Item>)
+      items.push(
+        <Dropdown.Item key={prop} onClick={() => this.props.updateCardStatus(this.props.cardId, prop)}>
+          <FontAwesome name={icon[prop]} />{status[prop]}
+        </Dropdown.Item>)
     }
     return items
   }
