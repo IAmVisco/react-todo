@@ -18,12 +18,12 @@ class PaperCard extends React.Component {
       }
     }
     return (
-      <div className={`paper-card ${this.props.card.color}`}>
+      <div className={`paper-card ${this.props.card.color}`} id={`card-${this.props.card.id}`}>
         <span className="card-remove" onClick={() => this.props.handleRemove(this.props.card.id)}>
           <FontAwesome name="times" />
         </span>
         <h3>{this.props.card.name}</h3>
-        <p>{this.props.card.description}</p>
+        <p className="card-desc">{this.props.card.description}</p>
         {this.props.card.files && <a
           href={this.props.card.files}
           target="_blank"
@@ -39,5 +39,4 @@ class PaperCard extends React.Component {
     )
   }
 }
-
 export default PaperCard

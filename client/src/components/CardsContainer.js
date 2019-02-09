@@ -5,12 +5,14 @@ import axios from 'axios'
 
 class CardsContainer extends Component {
   removeCard = (id) => {
-    console.log(id)
-    axios.delete('http://localhost:3001/api/card', {
-      data: {
-        id: id
-      }
-    }).then(this.props.updateData)
+    document.getElementById('card-' + id).classList.add('card-fade-out')
+    setTimeout(() => {
+      axios.delete('http://localhost:3001/api/card', {
+        data: {
+          id: id
+        }
+      }).then(this.props.updateData)
+    }, 800)
   }
 
   render() {

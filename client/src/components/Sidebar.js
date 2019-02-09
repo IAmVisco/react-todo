@@ -84,8 +84,9 @@ class Sidebar extends Component {
               <Form.Control
                 as="textarea"
                 name="description"
-                placeholder="Description"
+                placeholder="Description, 250 symbols max"
                 autoComplete="off"
+                maxLength="250"
                 value={this.state.description}
                 onChange={this.onChange} />
             </Form.Group>
