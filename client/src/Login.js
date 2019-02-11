@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import Header from './components/Header'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
-import {showStatusErrorToast} from './utils/utils'
+import {showStatusErrorToast, showTextErrorToast} from './utils/utils'
 import axios from 'axios'
+import {ToastContainer} from 'react-toastify'
 
 class Login extends Component {
   state = {
@@ -16,14 +17,12 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
-    axios
-      .post('http://localhost:3001/users/login', this.state)
+    axios.post('http://localhost:3001/users/login', this.state)
       .then(res => {
-        localStorage['authToken'] = res.data.token
+        localStorage.setItem('authToken', res.data.token)
         this.props.history.push('/')
       })
-      .catch(showStatusErrorToast) // TODO: handle properly
+      .catch((err) => showTextErrorToast(err.response.data.msg))
   }
 
   render() {
@@ -56,6 +55,7 @@ class Login extends Component {
             </Col>
           </Row>
         </Container>
+        <ToastContainer />
       </React.Fragment>
     )
   }

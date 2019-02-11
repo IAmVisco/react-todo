@@ -4,6 +4,7 @@ import {Col, Row} from 'react-bootstrap'
 import Sidebar from './components/Sidebar'
 import CardsContainer from './components/CardsContainer'
 import axios from 'axios'
+import {showTextErrorToast} from './utils/utils'
 
 class App extends React.Component {
   state = {
@@ -11,8 +12,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    axios.defaults.headers.common['x-access-token'] = localStorage.getItem('authToken')
     axios.get('http://localhost:3001/api/cards')
       .then(res => this.setState({data: res.data}))
+      .catch((err) => {
+        showTextErrorToast('Your session has expired, please log in again')
+        this.props.history.push('/login')
+      })
   }
 
   render() {

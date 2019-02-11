@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Header from './components/Header'
 import {Button, Col, Container, Form, Row} from 'react-bootstrap'
 import axios from 'axios'
-import {showStatusErrorToast, showTextErrorToast} from './utils/utils'
+import {showTextErrorToast} from './utils/utils'
 import {ToastContainer} from 'react-toastify'
 
 class Signup extends Component {
@@ -25,10 +25,10 @@ class Signup extends Component {
           email: this.state.email,
           password: this.state.password}))
         .then(res => {
-          localStorage['authToken'] = res.data.token
+          localStorage.setItem('authToken', res.data.roken)
           this.props.history.push('/')
         })
-        .catch(showStatusErrorToast)
+        .catch((err) => showTextErrorToast(err.response.data.msg))
     } else {
       showTextErrorToast('Passwords don\'t match!')
     }

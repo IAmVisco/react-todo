@@ -147,6 +147,12 @@ span.fa {
         padding 0.2s ease-in-out 0.3s;
 }
 
+.pink-grad {
+    height: 100vh;
+    background: linear-gradient(30deg, #FF5E9B 0%, #FFADA5 100%);
+    color: #fff;
+}
+
 .uploader-yellow-button .uploadcare--widget__button_type_open {
     background-color: #fbc701;
     cursor: pointer;
