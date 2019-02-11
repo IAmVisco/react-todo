@@ -25,7 +25,7 @@ class Signup extends Component {
           email: this.state.email,
           password: this.state.password}))
         .then(res => {
-          localStorage.setItem('authToken', res.data.roken)
+          localStorage.setItem('authToken', res.data.token)
           this.props.history.push('/')
         })
         .catch((err) => showTextErrorToast(err.response.data.msg))

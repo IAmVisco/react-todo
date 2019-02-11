@@ -12,8 +12,7 @@ class PaperCard extends React.Component {
     if (dueTo) {
       if (moment().isBefore(dueTo) || this.props.card.status === 'completed') {
         dueToFmt = <p>Due to <Moment format="MMM Do YYYY">{dueTo}</Moment></p>
-      }
-      else {
+      } else {
         dueToFmt = <p className="text-danger">Due to <Moment format="MMM Do YYYY">{dueTo}</Moment></p>
       }
     }
@@ -24,11 +23,11 @@ class PaperCard extends React.Component {
         </span>
         <h3>{this.props.card.name}</h3>
         <p className="card-desc">{this.props.card.description}</p>
-        {this.props.card.files && <a
-          href={this.props.card.files}
-          target="_blank"
-          rel="noopener noreferrer"
-        >Attachments</a>}
+        {/*{this.props.card.files && <a*/}
+        {/*href={this.props.card.files}*/}
+        {/*target="_blank"*/}
+        {/*rel="noopener noreferrer"*/}
+        {/*>Attachments</a>}*/}
         {dueToFmt}
         <PaperCardFooter
           status={this.props.card.status}
@@ -40,4 +39,5 @@ class PaperCard extends React.Component {
     )
   }
 }
+
 export default PaperCard

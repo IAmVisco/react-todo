@@ -5,7 +5,7 @@ class Logout extends Component {
   render() {
     localStorage.removeItem('authToken')
     return (
-      <Redirect to="/login"/>
+      <Redirect to="/"/>
     )
   }
 }

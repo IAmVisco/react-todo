@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Header from './components/Header'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
-import {showStatusErrorToast, showTextErrorToast} from './utils/utils'
+import {showTextErrorToast} from './utils/utils'
 import axios from 'axios'
 import {ToastContainer} from 'react-toastify'
 

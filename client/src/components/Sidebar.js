@@ -16,7 +16,6 @@ class Sidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: '',
       name: '',
       description: '',
       status: 'planning',
@@ -67,6 +66,7 @@ class Sidebar extends Component {
                 name="name"
                 placeholder="Enter name"
                 autoComplete="off"
+                required
                 value={this.state.name}
                 onChange={this.onChange}
               />

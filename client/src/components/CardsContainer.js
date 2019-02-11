@@ -24,7 +24,7 @@ class CardsContainer extends Component {
 
   render() {
     const cards = this.props.data.map(card => <PaperCard
-      key={card.id}
+      key={card._id}
       card={card}
       handleRemove={this.removeCard}
       updateCardStatus={this.updateCardStatus}
