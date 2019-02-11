@@ -3,7 +3,7 @@ import moment from 'moment'
 import Moment from 'react-moment'
 import PaperCardFooter from './PaperCardFooter'
 import FontAwesome from 'react-fontawesome'
-import '../styles/colors.css'
+import '../../styles/colors.css'
 
 class PaperCard extends React.Component {
   render() {

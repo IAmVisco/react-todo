@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const mongoDB = 'mongo_db_conn_string'
+const mongoDB = ''
 mongoose.connect(mongoDB, {useNewUrlParser: true})
 // mongoose.Promise = global.Promise
 

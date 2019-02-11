@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import {Container} from 'react-bootstrap'
-import PaperCard from './PaperCard'
+import PaperCard from './PaperCard/PaperCard'
 import axios from 'axios'
-import {showErrorToast} from '../utils/utils'
+import {showStatusErrorToast} from '../utils/utils'
 
 class CardsContainer extends Component {
   updateCardStatus = (id, newStatus) => {
     axios.patch('http://localhost:3001/api/card', {id, newStatus})
       .then(this.props.updateData)
-      .catch(showErrorToast)
+      .catch(showStatusErrorToast)
   }
   removeCard = (id) => {
     document.getElementById('card-' + id).classList.add('card-fade-out')
@@ -18,7 +18,7 @@ class CardsContainer extends Component {
           id: id
         }
       }).then(this.props.updateData)
-        .catch(showErrorToast)
+        .catch(showStatusErrorToast)
     }, 800)
   }
 

@@ -106,6 +106,10 @@ span.fa {
     margin-top: 15px;
 }
 
+.mt-50 {
+    margin-top: 50px;
+}
+
 .c-pointer {
     cursor: pointer;
 }

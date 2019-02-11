@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class ColorPickerItem extends Component {
   render() {
     return (
-      <>
+      <React.Fragment>
         <input
           type="radio"
           name="color"
@@ -16,10 +16,8 @@ class ColorPickerItem extends Component {
         <label
           className="material-label"
           htmlFor={this.props.color}
-        >
-          <span className={this.props.color}></span>
-        </label>
-      </>
+        ><span className={this.props.color} /></label>
+      </React.Fragment>
     )
   }
 }

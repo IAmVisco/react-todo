@@ -2,7 +2,7 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import ColorPickerItem from './ColorPickerItem'
 
-import '../styles/colors.css'
+import '../../styles/colors.css'
 
 class ColorPicker extends React.Component {
   render() {
@@ -18,6 +18,7 @@ class ColorPicker extends React.Component {
       'purple',
       'pink'
     ]
+
     const colorCircles = colors.map(color =>
       <ColorPickerItem
         key={color}
@@ -26,6 +27,7 @@ class ColorPicker extends React.Component {
         picked={this.props.value}
       />
     )
+
     return (
       <Form.Group>
         <Form.Label className="d-block">Color</Form.Label>

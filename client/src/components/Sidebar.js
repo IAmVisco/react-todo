@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import Collapsible from 'react-collapsible'
-import ColorPicker from './ColorPicker'
+import ColorPicker from './PaperCard/ColorPicker'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import {Button} from 'react-bootstrap'
 import {ToastContainer} from 'react-toastify'
 import axios from 'axios'
 import TinyDatePicker from 'tiny-date-picker'
-import {showErrorToast} from '../utils/utils'
+import {showStatusErrorToast} from '../utils/utils'
 import moment from 'moment'
 import 'tiny-date-picker/tiny-date-picker.min.css'
 import 'react-toastify/dist/ReactToastify.min.css'
@@ -47,7 +47,7 @@ class Sidebar extends Component {
     axios
       .post('http://localhost:3001/api/card', this.state)
       .then(res => this.props.updateData(res.data))
-      .catch(showErrorToast)
+      .catch(showStatusErrorToast)
   }
 
   render() {

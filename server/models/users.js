@@ -5,14 +5,16 @@ const saltRounds = 10
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-  name: {
+  username: {
     type: String,
     trim: true,
+    unique: true,
     required: true
   },
   email: {
     type: String,
     trim: true,
+    unique: true,
     required: true
   },
   password: {
@@ -23,7 +25,6 @@ const UserSchema = new Schema({
 })
 
 UserSchema.pre('save', function(next) {
-  console.log(this)
   this.password = bcrypt.hashSync(this.password, saltRounds)
   next()
 })

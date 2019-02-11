@@ -29,7 +29,6 @@ module.exports = {
     }
   },
   updateCard: function (req, res) {
-    console.log(req.body)
     let cardIndex = data.findIndex(el => el.id === req.body.id)
     if (cardIndex >= 0) {
       data[cardIndex].status = req.body.newStatus

@@ -4,7 +4,11 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
   create: (req, res, next) => {
-    userModel.create({name: req.body.name, email: req.body.email, password: req.body.password}, (err, result) => {
+    userModel.create({ // TODO: make unique only
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password}, (err, result) => {
+      console.log(err, result)
       if (err) {
         next(err)
       } else {
@@ -14,7 +18,6 @@ module.exports = {
   },
   authenticate: (req, res, next) => {
     userModel.findOne({email: req.body.email}, (err, userInfo) => {
-      console.log(userInfo)
       if (err) {
         next(err)
       } else {

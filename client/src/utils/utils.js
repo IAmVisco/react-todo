@@ -1,6 +1,6 @@
 import {toast} from 'react-toastify'
 
-function showErrorToast(err) {
+function showStatusErrorToast(err) {
   const res = err.response
   toast.error(`Error ${res.status} has occured! ${res.statusText}`, {
     position: toast.POSITION.BOTTOM_RIGHT,
@@ -8,6 +8,14 @@ function showErrorToast(err) {
   })
 }
 
+function showTextErrorToast(err) {
+  toast.error(err, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 5000
+  })
+}
+
 export {
-  showErrorToast
+  showStatusErrorToast,
+  showTextErrorToast
 }

@@ -1,17 +1,43 @@
 import React from 'react'
 import {Nav, Navbar, Container} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
+import FontAwesome from 'react-fontawesome'
 
 class Header extends React.Component {
   render() {
+    let loginPartial
+    if (localStorage.getItem('authToken')) {
+      loginPartial =
+        <React.Fragment>
+          <LinkContainer to="/logout">
+            <Nav.Link><FontAwesome name="sign-out-alt"/>Logout</Nav.Link>
+          </LinkContainer>
+        </React.Fragment>
+    } else {
+      loginPartial =
+        <React.Fragment>
+          <LinkContainer to="/login">
+            <Nav.Link><FontAwesome name="sign-in-alt"/>Login</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/signup">
+            <Nav.Link><FontAwesome name="user"/>Register</Nav.Link>
+          </LinkContainer>
+        </React.Fragment>
+    }
     return (
       <Navbar bg="light" expand="sm" className="shadow">
         <Container>
-          <Navbar.Brand href="#home">React ToDo</Navbar.Brand>
-          <Navbar.Toggle />
+          <LinkContainer to="/">
+            <Navbar.Brand>React ToDo</Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle/>
           <Navbar.Collapse id="navbar-collapse">
             <Nav className="mr-auto">
-              <Nav.Link className="nav-link" href="#home">Home</Nav.Link>
+              <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
             </Nav>
+            {loginPartial}
           </Navbar.Collapse>
         </Container>
       </Navbar>
