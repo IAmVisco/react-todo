@@ -13,38 +13,30 @@ import 'tiny-date-picker/tiny-date-picker.min.css'
 import 'react-toastify/dist/ReactToastify.min.css'
 
 class Sidebar extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: '',
-      description: '',
-      status: 'planning',
-      color: 'grey',
-      dueTo: '',
-      files: '',
-      createdAt: ''
-    }
-
-    this.onChange = this.onChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
+  state = {
+    name: '',
+    description: '',
+    status: 'planning',
+    color: 'grey',
+    dueTo: '',
+    files: '',
+    createdAt: ''
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     TinyDatePicker(document.getElementById('dueTo'), {
       mode: 'dp-below',
       format: date => moment(date).format('YYYY-MM-DD')
-    }).on('select', (_, dp) => this.setState({dueTo:  moment(dp.state.selectedDate).format('YYYY-MM-DD')}))
+    }).on('select', (_, dp) => this.setState({dueTo: moment(dp.state.selectedDate).format('YYYY-MM-DD')}))
   }
 
-  onChange(e) {
+  onChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault()
-    axios
-      .post('http://localhost:3001/api/card', this.state)
+    axios.post('http://localhost:3001/api/card', this.state)
       .then(res => this.props.updateData(res.data))
       .catch(showStatusErrorToast)
   }

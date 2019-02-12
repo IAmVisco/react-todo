@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const saltRounds = 10
 
 const Schema = mongoose.Schema
@@ -28,7 +28,9 @@ const UserSchema = new Schema({
 })
 
 UserSchema.pre('save', function (next) {
-  this.password = bcrypt.hashSync(this.password, saltRounds)
+  if (this.isNew) {
+    this.password = bcrypt.hashSync(this.password, saltRounds)
+  }
   next()
 })
 

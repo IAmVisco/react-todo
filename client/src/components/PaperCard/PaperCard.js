@@ -16,23 +16,19 @@ class PaperCard extends React.Component {
         dueToFmt = <p className="text-danger">Due to <Moment format="MMM Do YYYY">{dueTo}</Moment></p>
       }
     }
+
     return (
-      <div className={`paper-card ${this.props.card.color}`} id={`card-${this.props.card.id}`}>
-        <span className="card-remove" onClick={() => this.props.handleRemove(this.props.card.id)}>
+      <div className={`paper-card ${this.props.card.color}`} id={`card-${this.props.card._id}`}>
+        <span className="card-remove" onClick={() => this.props.handleRemove(this.props.card._id)}>
           <FontAwesome name="times" />
         </span>
         <h3>{this.props.card.name}</h3>
         <p className="card-desc">{this.props.card.description}</p>
-        {/*{this.props.card.files && <a*/}
-        {/*href={this.props.card.files}*/}
-        {/*target="_blank"*/}
-        {/*rel="noopener noreferrer"*/}
-        {/*>Attachments</a>}*/}
         {dueToFmt}
         <PaperCardFooter
           status={this.props.card.status}
           createdAt={this.props.card.createdAt}
-          cardId={this.props.card.id}
+          cardId={this.props.card._id}
           updateCardStatus={this.props.updateCardStatus}
         />
       </div>

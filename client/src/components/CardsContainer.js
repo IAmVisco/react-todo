@@ -19,7 +19,7 @@ class CardsContainer extends Component {
         }
       }).then(this.props.updateData)
         .catch(showStatusErrorToast)
-    }, 800)
+    }, 500)
   }
 
   render() {
