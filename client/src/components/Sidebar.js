@@ -36,8 +36,13 @@ class Sidebar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    document.querySelector('.spinner-container').classList.remove('d-none')
+
     axios.post('http://localhost:3001/api/card', this.state)
-      .then(res => this.props.updateData(res.data))
+      .then(response => {
+        this.props.updateData(response)
+        document.querySelector('.spinner-container').classList.add('d-none')
+      })
       .catch(showStatusErrorToast)
   }
 
