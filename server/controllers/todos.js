@@ -12,36 +12,38 @@ function writeDataToFile(data) {
   })
 }
 
-getAllCards = () => {
-  console.log('get all cards')
-}
-
 module.exports = {
   getCards: function (req, res) {
-    userModel.findById(req.body.userId)
-      .populate('cards').exec((err, user) => {
-        if (err) {
-          res.status(500).send(err)
-        }
-        res.status(200).send(user.cards)
-      })
+    userModel.findById(req.body.userId).populate('cards').sort({createdAt: 'desc'}).exec((err, user) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      res.status(200).send(user.cards)
+    })
   },
   createCard: function (req, res) {
     let card = req.body
-    if (card && (card.name || card.description)) {
+    console.log(card)
+    if (card && card.name) {
       todoModel.create({
         name: card.name,
         description: card.description,
         status: card.status,
         color: card.color,
         dueTo: card.dueTo
-      }).then((card) => {
-        userModel.findById(req.body.userId, (err, user) => {
-          user.cards.unshift(card)
-          user.save().then(getAllCards) //TODO: finish this
+      }).then((newCard) => {
+        userModel.findById(card.userId, (err, user) => {
+          user.cards.push(newCard)
+          user.save().then((user) => {
+            todoModel.find({_id: {$in: user.cards}}).sort({createdAt: 'desc'}).exec((err, cards) => {
+              if (err) {
+                res.status(500).send(err)
+              }
+              res.status(200).send(cards)
+            })
+          })
         })
       })
-      res.status(200).send(data)
     } else {
       res.status(400).send([])
     }
