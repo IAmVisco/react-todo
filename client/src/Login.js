@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Header from './components/Header'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome'
 import {showTextErrorToast} from './utils/utils'
 import axios from 'axios'
 import {ToastContainer} from 'react-toastify'
@@ -17,12 +18,18 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    document.querySelector('.fa-circle-notch').classList.remove('d-none')
+    document.querySelector('.btn-primary').disabled = true
     axios.post('http://localhost:3001/users/login', this.state)
       .then(res => {
         localStorage.setItem('authToken', res.data.token)
         this.props.history.push('/')
       })
-      .catch((err) => showTextErrorToast(err.response.data.msg))
+      .catch((err) => {
+        document.querySelector('.fa-circle-notch').classList.add('d-none')
+        document.querySelector('.btn-primary').disabled = false
+        showTextErrorToast(err.response.data.msg)
+      })
   }
 
   render() {
@@ -50,7 +57,8 @@ class Login extends Component {
                     value={this.state.password}
                     onChange={this.onChange} />
                 </Form.Group>
-                <Button className="btn-wide" variant="primary" type="submit">Login</Button>
+                <Button className="btn-wide" variant="primary" type="submit">Login <FontAwesome
+                  name="circle-notch" className="d-none fa-spin" /></Button>
               </Form>
             </Col>
           </Row>

@@ -11,6 +11,7 @@ import {showStatusErrorToast} from '../utils/utils'
 import moment from 'moment'
 import 'tiny-date-picker/tiny-date-picker.min.css'
 import 'react-toastify/dist/ReactToastify.min.css'
+import FontAwesome from 'react-fontawesome'
 
 class Sidebar extends Component {
   state = {
@@ -37,11 +38,14 @@ class Sidebar extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     document.querySelector('.spinner-container').classList.remove('d-none')
-
+    document.querySelector('.fa-circle-notch').classList.remove('d-none')
+    document.querySelector('.btn-primary').disabled = true
     axios.post('http://localhost:3001/api/card', this.state)
       .then(response => {
         this.props.updateData(response)
         document.querySelector('.spinner-container').classList.add('d-none')
+        document.querySelector('.fa-circle-notch').classList.add('d-none')
+        document.querySelector('.btn-primary').disabled = false
       })
       .catch(showStatusErrorToast)
   }
@@ -120,7 +124,8 @@ class Sidebar extends Component {
               />
             </Form.Group>
 
-            <Button className="btn-wide" variant="primary" type="submit">Save</Button>
+            <Button className="btn-wide" variant="primary" type="submit">Save <FontAwesome
+              name="circle-notch" className="d-none fa-spin" /></Button>
           </Form>
         </Collapsible>
         <ToastContainer />
