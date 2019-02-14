@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import {Button} from 'react-bootstrap'
 import {ToastContainer} from 'react-toastify'
-import axios from 'axios'
+// import axios from 'axios'
+import io from 'socket.io-client'
 import TinyDatePicker from 'tiny-date-picker'
 import {showStatusErrorToast} from '../utils/utils'
 import moment from 'moment'
@@ -40,14 +41,13 @@ class Sidebar extends Component {
     document.querySelector('.spinner-container').classList.remove('d-none')
     document.querySelector('.fa-circle-notch').classList.remove('d-none')
     document.querySelector('.btn-primary').disabled = true
-    axios.post('http://localhost:3001/api/card', this.state)
-      .then(response => {
-        this.props.updateData(response)
-        document.querySelector('.spinner-container').classList.add('d-none')
-        document.querySelector('.fa-circle-notch').classList.add('d-none')
-        document.querySelector('.btn-primary').disabled = false
-      })
-      .catch(showStatusErrorToast)
+
+    this.props.socket.on('cards', () => {
+      document.querySelector('.spinner-container').classList.add('d-none')
+      document.querySelector('.fa-circle-notch').classList.add('d-none')
+      document.querySelector('.btn-primary').disabled = false
+    })
+    this.props.socket.emit('postCard', this.state)
   }
 
   render() {

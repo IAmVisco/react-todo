@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "concurrently \"cd server && nodemon --ignore data.json server.js\" \"cd client && npm start\""
+    "start": "concurrently \"cd server && nodemon --ignore data.json socket-server.js\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",

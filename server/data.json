@@ -1,6 +1,6 @@
 [
     {
-        "id": "sBiU98Zm",
+        "_id": "sBiU98Zm",
         "name": "New card",
         "description": "Wow this one is saved to json! And its pink!",
         "status": "completed",
@@ -9,7 +9,7 @@
         "createdAt": "2019-01-31"
     },
     {
-        "id": "AHvICIOn",
+        "_id": "AHvICIOn",
         "name": "How to make lab 1",
         "description": "Learn node.js",
         "color": "blue",
@@ -19,7 +19,7 @@
         "dueTo": "2019-01-30"
     },
     {
-        "id": "UoxOWdEf",
+        "_id": "UoxOWdEf",
         "name": "Learn something else",
         "description": "Like React, I heard its awesome. Same goes to GraphQL but I kinda know that one already, used it in AniList API queries.",
         "color": "grey",
