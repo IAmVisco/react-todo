@@ -1,40 +1,40 @@
 import React from 'react'
-import Header from './components/Header'
+import io from 'socket.io-client'
 import {Col, Row} from 'react-bootstrap'
+
+import spinner from './spinner.svg'
+import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import CardsContainer from './components/CardsContainer'
-// import axios from 'axios'
-import io from 'socket.io-client'
-import spinner from './spinner.svg'
-import {showTextErrorToast} from './utils/utils'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
-    this.socket = io('http://localhost:8000')
+    this.socket = io('http://localhost:3001', {
+      query: {
+        token: localStorage.getItem('authToken')
+      }
+    })
+
     this.state = {
       data: []
     }
   }
 
   componentDidMount() {
-    this.socket.on('cards', data => {
+    if (!localStorage.getItem('authToken')) {
+      this.props.history.push('/')
+    }
+    this.socket.on('error', (err) => {
+      localStorage.removeItem('authToken')
+      this.props.history.push('/login')
+    })
+    this.socket.on('cards', (data) => {
       document.querySelector('.spinner-container').classList.add('d-none')
       this.setState({data})
     })
-    this.socket.emit('getCards')
-    // document.querySelector('.spinner-container').classList.remove('d-none')
-    // axios.defaults.headers.common['x-access-token'] = localStorage.getItem('authToken')
-    // axios.get('http://localhost:3001/api/cards')
-    //   .then(response => {
-    //     document.querySelector('.spinner-container').classList.add('d-none')
-    //     this.setState({data: response.data})
-    //   }).catch((err) => {
-    //     showTextErrorToast('Your session has expired, please log in again')
-    //     localStorage.removeItem('authToken')
-    //     this.props.history.push('/login')
-    //   })
+    this.socket.emit('get cards')
   }
 
   render() {

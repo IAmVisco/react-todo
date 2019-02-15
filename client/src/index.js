@@ -11,7 +11,10 @@ import {Route, BrowserRouter as Router, Redirect} from 'react-router-dom'
 const routing = (
   <Router>
     <div>
-      <Route path="/" component={App} />
+      <Route exact path="/" render={() => (
+        localStorage.getItem('authToken') ? <Redirect to="/app" /> : <Home />
+      )} />
+      <Route path="/app" component={App} />
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
