@@ -1,8 +1,9 @@
 import React from 'react'
 import moment from 'moment'
 import Moment from 'react-moment'
-import PaperCardFooter from './PaperCardFooter'
 import FontAwesome from 'react-fontawesome'
+import PaperCardFooter from './PaperCardFooter'
+
 import '../../styles/colors.css'
 
 class PaperCard extends React.Component {
