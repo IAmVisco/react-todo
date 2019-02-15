@@ -1,32 +1,27 @@
 import React, {Component} from 'react'
 import {Container} from 'react-bootstrap'
 import PaperCard from './PaperCard/PaperCard'
-import axios from 'axios'
-import {showStatusErrorToast} from '../utils/utils'
 
 class CardsContainer extends Component {
   updateCardStatus = (id, newStatus) => {
     document.querySelector('.spinner-container').classList.remove('d-none')
-    axios.patch('http://localhost:3001/api/card', {id, newStatus})
-      .then(response => {
-        document.querySelector('.spinner-container').classList.add('d-none')
-        this.props.updateData(response)
-      }).catch(showStatusErrorToast)
+    this.props.socket.emit('update status', {id, newStatus})
   }
+
   removeCard = (id) => {
     document.getElementById('card-' + id).classList.add('card-fade-out')
     document.querySelector('.spinner-container').classList.remove('d-none')
+
     setTimeout(() => {
-      axios.delete('http://localhost:3001/api/card', {
-        data: {id}
-      }).then(response => {
-        document.querySelector('.spinner-container').classList.add('d-none')
-        this.props.updateData(response)
-      }).catch(showStatusErrorToast)
+      this.props.socket.emit('delete card', id)
     }, 500)
   }
 
   render() {
+    this.props.socket.on('cards', () => {
+      document.querySelector('.spinner-container').classList.add('d-none')
+    })
+
     let cards = this.props.data.map(card => <PaperCard
       key={card._id}
       card={card}

@@ -44,16 +44,20 @@ class App extends React.Component {
         <Row>
           <Col lg={3}>
             <Sidebar
-            data={this.state.data}
-            updateData={data => this.setState({data: data.data})}
-            socket={this.socket}
-          />
+              data={this.state.data}
+              updateData={data => this.setState({data: data.data})}
+              socket={this.socket}
+            />
           </Col>
           <Col lg={9} className="position-relative">
             <div className="spinner-container full-absolute">
               <img src={spinner} alt="Loading spinner" className="spinner m-auto full-absolute" />
             </div>
-            <CardsContainer data={this.state.data} updateData={data => this.setState({data: data.data})} />
+            <CardsContainer
+              data={this.state.data}
+              updateData={data => this.setState({data: data.data})}
+              socket={this.socket}
+            />
           </Col>
         </Row>
       </React.Fragment>
