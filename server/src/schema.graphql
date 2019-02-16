@@ -1,0 +1,12 @@
+type Query {
+  getCards(userId: String!): [Todo]
+}
+
+type Todo {
+  name: String!
+  description: String
+  status: String!
+  color: String!
+  createdAt: String!
+  dueTo: String
+}

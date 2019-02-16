@@ -1,4 +1,5 @@
 /.idea
+/server/build/
 
 # dependencies
 **/node_modules

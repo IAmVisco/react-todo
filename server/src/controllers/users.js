@@ -24,7 +24,7 @@ module.exports = {
           res.status(500).send({status: 'error', msg: err.message})
         } else {
           if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-            const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), {expiresIn: '1h'})
+            const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), {expiresIn: '24h'})
             res.status(200).send({status: 'success', msg: 'User logged in', token: token})
           } else {
             res.status(403).send({status: 'error', msg: 'Invalid email/password'})
