@@ -1,6 +1,9 @@
 {
     "parserOptions": {
-        "ecmaVersion": 2017
+        "ecmaVersion": 2017,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
     },
     "env": {
         "browser": true,
@@ -20,7 +23,10 @@
             "warn",
             "never"
         ],
-        // "no-console": "warn",
+        "object-curly-spacing": [
+            "warn",
+            "always"
+        ],
         "no-undef": "warn"
     }
 }

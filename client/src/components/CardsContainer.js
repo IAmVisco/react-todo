@@ -1,11 +1,14 @@
-import React, {Component} from 'react'
-import {Container} from 'react-bootstrap'
+import React, { Component } from 'react'
+import axios from 'axios'
+import { Container } from 'react-bootstrap'
+import { gql } from '../utils/utils'
 import PaperCard from './PaperCard/PaperCard'
 
 class CardsContainer extends Component {
   updateCardStatus = (id, newStatus) => {
     document.querySelector('.spinner-container').classList.remove('d-none')
-    this.props.socket.emit('update status', {id, newStatus})
+
+    document.querySelector('.spinner-container').classList.add('d-none')
   }
 
   removeCard = (id) => {
@@ -13,15 +16,20 @@ class CardsContainer extends Component {
     document.querySelector('.spinner-container').classList.remove('d-none')
 
     setTimeout(() => {
-      this.props.socket.emit('delete card', id)
+      axios.post('http://localhost:4000/graphql', {
+        query: gql.DELETE_CARD,
+        variables: {
+          id: id,
+          userId: localStorage.getItem('userId')
+        }
+      }).then((response) => {
+        this.props.reloadData()
+        document.querySelector('.spinner-container').classList.add('d-none')
+      })
     }, 500)
   }
 
   render() {
-    this.props.socket.on('cards', () => {
-      document.querySelector('.spinner-container').classList.add('d-none')
-    })
-
     let cards = this.props.data.map(card => <PaperCard
       key={card._id}
       card={card}

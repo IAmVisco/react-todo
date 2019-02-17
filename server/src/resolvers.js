@@ -1,7 +1,8 @@
-const getCards = require('./controllers/todos').getCards
+const {getCards, createCard, removeCard} = require('./controllers/todos')
 
 const resolvers = {
-  Query: {getCards}
+  Query: {getCards},
+  Mutation: {createCard, removeCard}
 }
 
 export default resolvers

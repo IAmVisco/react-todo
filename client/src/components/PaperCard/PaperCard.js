@@ -28,7 +28,7 @@ class PaperCard extends React.Component {
         {dueToFmt}
         <PaperCardFooter
           status={this.props.card.status}
-          createdAt={this.props.card.createdAt}
+          createdAt={Date.parse(this.props.card.createdAt)}
           cardId={this.props.card._id}
           updateCardStatus={this.props.updateCardStatus}
         />

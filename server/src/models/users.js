@@ -23,7 +23,7 @@ const UserSchema = new Schema({
     required: true
   },
   cards: [
-    {type: Schema.Types.ObjectId, ref: 'Todo'}
+    { type: Schema.Types.ObjectId, ref: 'Todo' }
   ]
 })
 

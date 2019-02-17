@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import ColorPickerItem from './ColorPickerItem'
 
 import '../../styles/colors.css'

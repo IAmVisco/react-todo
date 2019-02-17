@@ -1,12 +1,28 @@
-type Query {
-  getCards(userId: String!): [Todo]
-}
-
 type Todo {
+  _id: ID!
   name: String!
   description: String
   status: String!
   color: String!
   createdAt: String!
   dueTo: String
+}
+
+input CardInput {
+  userId: String!
+  name: String!
+  description: String
+  status: String!
+  color: String!
+  createdAt: String
+  dueTo: String
+}
+
+type Query {
+  getCards(userId: String!): [Todo]!
+}
+
+type Mutation {
+  createCard(input: CardInput): Todo!
+  removeCard(id: String!, userId: String!): Boolean
 }

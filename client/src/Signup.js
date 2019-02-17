@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Header from './components/Header'
-import {Button, Col, Container, Form, Row} from 'react-bootstrap'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import axios from 'axios'
-import {showTextErrorToast} from './utils/utils'
-import {ToastContainer} from 'react-toastify'
+import { showTextErrorToast } from './utils/utils'
+import { ToastContainer } from 'react-toastify'
 
 class Signup extends Component {
   state = {
@@ -14,7 +14,7 @@ class Signup extends Component {
   }
 
   onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   handleSubmit = (e) => {
@@ -23,7 +23,7 @@ class Signup extends Component {
       axios.post('http://localhost:3001/users/signup', this.state)
         .then(res => axios.post('http://localhost:3001/users/login', {
           email: this.state.email,
-          password: this.state.password}))
+          password: this.state.password }))
         .then(res => {
           localStorage.setItem('authToken', res.data.token)
           this.props.history.push('/')

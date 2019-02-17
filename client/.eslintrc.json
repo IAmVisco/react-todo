@@ -3,6 +3,7 @@
   "rules": {
     "quotes": ["warn", "single"],
     "indent": ["warn", 2],
-    "semi": ["warn", "never"]
+    "semi": ["warn", "never"],
+    "object-curly-spacing": ["warn", "always"]
   }
 }

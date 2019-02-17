@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {Col, Row} from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Col, Row } from 'react-bootstrap'
 import Header from './components/Header'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
   render() {

@@ -6,7 +6,7 @@ import Signup from './Signup'
 import Login from './Login'
 import Logout from './Logout'
 import Home from './Home'
-import {Route, BrowserRouter as Router, Redirect} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
 
 const routing = (
   <Router>

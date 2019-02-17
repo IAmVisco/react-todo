@@ -1,10 +1,12 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import axios from 'axios'
 import moment from 'moment'
 import Collapsible from 'react-collapsible'
 import FontAwesome from 'react-fontawesome'
-import {ToastContainer} from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import TinyDatePicker from 'tiny-date-picker'
-import {Button, Container, Form} from 'react-bootstrap'
+import { Button, Container, Form } from 'react-bootstrap'
+import { gql } from '../utils/utils'
 import ColorPicker from './PaperCard/ColorPicker'
 
 import 'tiny-date-picker/tiny-date-picker.min.css'
@@ -17,7 +19,6 @@ class Sidebar extends Component {
     status: 'planning',
     color: 'grey',
     dueTo: '',
-    files: '',
     createdAt: ''
   }
 
@@ -25,11 +26,11 @@ class Sidebar extends Component {
     TinyDatePicker(document.getElementById('dueTo'), {
       mode: 'dp-below',
       format: date => moment(date).format('YYYY-MM-DD')
-    }).on('select', (_, dp) => this.setState({dueTo: moment(dp.state.selectedDate).format('YYYY-MM-DD')}))
+    }).on('select', (_, dp) => this.setState({ dueTo: moment(dp.state.selectedDate).format('YYYY-MM-DD') }))
   }
 
   onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   handleSubmit = (e) => {
@@ -38,12 +39,18 @@ class Sidebar extends Component {
     document.querySelector('.fa-circle-notch').classList.remove('d-none')
     document.querySelector('.btn-primary').disabled = true
 
-    this.props.socket.on('cards', () => {
+    axios.post(gql.GQL_ENDPOINT, {
+      query: gql.POST_CARD,
+      variables: { userId: localStorage.getItem('userId'), ...this.state }
+    }).then((response) => {
+      const { data } = response.data
+      this.props.updateData(data.createCard)
       document.querySelector('.spinner-container').classList.add('d-none')
       document.querySelector('.fa-circle-notch').classList.add('d-none')
       document.querySelector('.btn-primary').disabled = false
+    }).catch((err) => {
+      console.log(err)
     })
-    this.props.socket.emit('post card', this.state)
   }
 
   render() {

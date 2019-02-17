@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Header from './components/Header'
-import {Button, Container, Row, Col, Form} from 'react-bootstrap'
+import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
-import {showTextErrorToast} from './utils/utils'
+import { showTextErrorToast } from './utils/utils'
 import axios from 'axios'
-import {ToastContainer} from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 class Login extends Component {
   state = {
@@ -13,16 +13,17 @@ class Login extends Component {
   }
 
   onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
     document.querySelector('.fa-circle-notch').classList.remove('d-none')
     document.querySelector('.btn-primary').disabled = true
-    axios.post('http://localhost:3001/users/login', this.state)
+    axios.post('http://localhost:4000/users/login', this.state)
       .then(res => {
         localStorage.setItem('authToken', res.data.token)
+        localStorage.setItem('userId', res.data.userId)
         this.props.history.push('/')
       })
       .catch((err) => {

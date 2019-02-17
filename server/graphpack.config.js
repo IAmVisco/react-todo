@@ -1,5 +1,5 @@
-const express = require('express')
 const cors = require('cors')
+const express = require('express')
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 
@@ -14,16 +14,15 @@ app.set('secretKey', 'todoapp')
 
 app.use(cors())
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/users', users)
 
 app.use((req, res, next) => {
   jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), (err, decoded) => {
     if (err) {
-      res.status(401).send({status: 'error', message: err.message})
+      res.status(401).send({ status: 'error', message: err.message })
     } else {
-      req.body.userId = decoded.id
       next()
     }
   })
@@ -31,7 +30,6 @@ app.use((req, res, next) => {
 
 module.exports = {
   server: {
-    applyMiddleware: {app},
-    port: 3001
+    applyMiddleware: { app }
   }
 }

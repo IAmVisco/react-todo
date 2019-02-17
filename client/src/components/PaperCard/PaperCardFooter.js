@@ -1,7 +1,7 @@
 import React from 'react'
 import Moment from 'react-moment'
 import FontAwesome from 'react-fontawesome'
-import {Dropdown} from 'react-bootstrap'
+import { Dropdown } from 'react-bootstrap'
 
 const status = {
   'completed': 'Completed',

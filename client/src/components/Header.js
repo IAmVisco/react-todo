@@ -1,7 +1,7 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
-import {LinkContainer} from 'react-router-bootstrap'
-import {Nav, Navbar, Container} from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Nav, Navbar, Container } from 'react-bootstrap'
 
 class Header extends React.Component {
   render() {
