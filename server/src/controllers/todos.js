@@ -23,6 +23,11 @@ async function createCard(_, args) {
   return newCard
 }
 
+async function updateCard(_, args) {
+  const { id, newStatus } = args
+  await todoModel.findByIdAndUpdate(id, { status: newStatus }).exec()
+}
+
 async function removeCard(_, args) {
   const { id, userId } = args
   const user = await userModel.findById(userId).exec()
@@ -34,6 +39,7 @@ async function removeCard(_, args) {
 module.exports = {
   getCards,
   createCard,
+  updateCard,
   removeCard
 }
 // module.exports = {

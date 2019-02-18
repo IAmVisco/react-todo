@@ -7,8 +7,16 @@ import PaperCard from './PaperCard/PaperCard'
 class CardsContainer extends Component {
   updateCardStatus = (id, newStatus) => {
     document.querySelector('.spinner-container').classList.remove('d-none')
-
-    document.querySelector('.spinner-container').classList.add('d-none')
+    axios.post('http://localhost:4000/graphql', {
+      query: gql.UPDATE_CARD,
+      variables: {
+        id: id,
+        newStatus: newStatus
+      }
+    }).then((response) => {
+      this.props.reloadData()
+      document.querySelector('.spinner-container').classList.add('d-none')
+    })
   }
 
   removeCard = (id) => {

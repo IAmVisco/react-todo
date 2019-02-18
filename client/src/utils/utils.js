@@ -31,9 +31,10 @@ const gql = {
     }
   }
   `,
-  UPDATE_CARD: `{
-  1
-  }`,
+  UPDATE_CARD: `mutation ($id: String!, $newStatus: String!) {
+    updateCard(id: $id, newStatus: $newStatus)
+  }
+  `,
   DELETE_CARD: `mutation ($id: String!, $userId: String!) {
     removeCard(id: $id, userId: $userId)
   }`

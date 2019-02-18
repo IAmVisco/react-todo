@@ -24,5 +24,6 @@ type Query {
 
 type Mutation {
   createCard(input: CardInput): Todo!
+  updateCard(id: String!, newStatus: String!): Boolean
   removeCard(id: String!, userId: String!): Boolean
 }
