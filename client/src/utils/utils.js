@@ -17,6 +17,7 @@ const gql = {
       status
       color
       createdAt
+      dueTo
     }
   }`,
   POST_CARD: `mutation ($userId: String!, $name: String!, $description: String, $status: String!, $color: String!, $createdAt: String, $dueTo: String) {
