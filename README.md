@@ -1,25 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# React Todo App
+## Small todo app created using React, Node.js, Socket.IO, GraphQL and many more. Implementation variant can be changed using tags
+### Usage
+1. Put your Mongo Atlas link to the server/src/config/database.js config file
+2. `npm i` in the repo root, client/ and server/ folders
+3. `npm start` either in repo root to run client and server in paralel or in each directory separately to have nicer output for debugging
