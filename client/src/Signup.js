@@ -20,8 +20,8 @@ class Signup extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     if (this.state.password === this.state.passwordConf) {
-      axios.post('http://localhost:3001/users/signup', this.state)
-        .then(res => axios.post('http://localhost:3001/users/login', {
+      axios.post('http://localhost:4000/users/signup', this.state)
+        .then(res => axios.post('http://localhost:4000/users/login', {
           email: this.state.email,
           password: this.state.password }))
         .then(res => {
